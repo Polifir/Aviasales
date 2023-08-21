@@ -1,0 +1,56 @@
+@import '../../variables.scss';
+.container {
+  display: flex;
+  flex-direction: column;
+  border-radius: $borderDeg;
+  background-color: $primary-color;
+  box-shadow: $box-shadow;
+  padding: 20px;
+  gap: 20px;
+  text-transform: uppercase;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.prise {
+  color: $secondary-color;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.infoContainer {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+
+  li {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.title {
+  color: $secondary-font-color;
+  font-size: 12px;
+  font-weight: 600;
+}
+.info {
+  color: $main-font-color;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.logoContainer {
+}
+.logo {
+}

@@ -1,0 +1,62 @@
+@import '../../variables.scss';
+
+.container {
+  color: $main-font-color;
+  background-color: $primary-color;
+  border-radius: $borderDeg;
+  box-shadow: $box-shadow;
+  max-height: 250px;
+}
+
+.title {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 20px 20px 0 20px;
+}
+
+.inputItems {
+  margin-top: 20px;
+  text-decoration: none;
+  list-style: none;
+}
+
+.inputContainer {
+  position: relative;
+  padding-left: 45px;
+  height: 20px;
+  margin: 10px 0;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.inputContainer:hover {
+  background: #f1fcff;
+}
+
+.checkInput {
+  position: absolute;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.checkbox {
+  position: absolute;
+  left: 20px;
+  background-image: url('../../assets/Checkbox.svg');
+  width: 20px;
+  height: 20px;
+}
+
+.checkInput:checked {
+  content: '';
+  position: absolute;
+  left: 20px;
+  background-image: url('../../assets/CheckboxActive.svg');
+  width: 20px;
+  height: 20px;
+}
+
+.inputText {
+  font-size: 13px;
+}
