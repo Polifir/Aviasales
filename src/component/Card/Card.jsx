@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { format } from 'date-fns';
 import styles from './Card.module.scss';
 

@@ -53,15 +53,4 @@ export const TicketsSlice = createSlice({
   },
 });
 
-//  =
-//       const ticketsArr = await axios
-//         .get(`https://aviasales-test-api.kata.academy/tickets?searchId=${id}`)
-//         .then((resp) => {
-//           return resp;
-//         });
-//       console.log(ticketsArr);
-//     };
-// });
-
-// export const { } = TicketsSlice;
 export default TicketsSlice.reducer;
