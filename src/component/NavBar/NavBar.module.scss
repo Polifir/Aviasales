@@ -31,3 +31,22 @@ li:last-child .button {
   color: $primary-color;
   border: 1px solid $secondary-color;
 }
+
+@media (max-width: 670px) {
+  .container {
+    justify-content: center;
+  }
+  .button {
+    padding: 5px;
+    font-size: 10px;
+  }
+}
+@media (max-width: 330px) {
+  .container {
+    justify-content: center;
+  }
+  .button {
+    padding: 5px 0px;
+    font-size: 10px;
+  }
+}

@@ -45,7 +45,9 @@ export const CardCollection = () => {
           );
         })
       ) : (
-        <p className={button}>Нет билетов</p>
+        <p className={button}>
+          Рейсов, подходящих под заданные фильтры, не найдено
+        </p>
       )}
       {ticketsRes.length !== 0 && (
         <button
