@@ -8,7 +8,7 @@ const initialState = {
 };
 
 export const featchIdSession = createAsyncThunk('fetchIdSession', async () => {
-  const res = axios
+  const res = await axios
     .get('https://aviasales-test-api.kata.academy/search')
     .then((resp) => {
       return resp.data.searchId;
@@ -19,11 +19,12 @@ export const featchIdSession = createAsyncThunk('fetchIdSession', async () => {
 export const featchTicketsGet = createAsyncThunk(
   'featchTicketsGet',
   async (id) => {
-    const ticketsArr = axios
+    const ticketsArr = await axios
       .get(`https://aviasales-test-api.kata.academy/tickets?searchId=${id}`)
       .then((resp) => {
         return resp.data;
       });
+
     return ticketsArr;
   }
 );
@@ -41,12 +42,13 @@ export const TicketsSlice = createSlice({
       console.log('error search id session');
     });
     builder.addCase(featchTicketsGet.fulfilled, (state, action) => {
-      // while (!action.payload.stop) {
-      // }
       state.tickets.push(...action.payload.tickets);
-      console.log(action.payload);
-
       state.stop = action.payload.stop;
+    });
+    builder.addCase(featchTicketsGet.rejected, (state, action) => {
+      if (action.error.message === 'Request failed with status code 500') {
+        state.stop = true;
+      }
     });
   },
 });

@@ -1,30 +1,40 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Card } from '../Card/Card';
-import { featchTicketsGet } from '../../store/tickets/tickets.slice';
-import { useEffect } from 'react';
+import styles from './CardCollection.module.scss';
+import {
+  featchIdSession,
+  featchTicketsGet,
+} from '../../store/tickets/tickets.slice';
+import { useEffect, useState } from 'react';
+import { filterTicketsTransfer } from './filterTicketsTransfer';
+import { filterPrimaryTickets } from './filterPrimaryTickets';
 
 export const CardCollection = () => {
-  const dispatch = useDispatch();
+  const { button } = styles;
   const { tickets, stop, idSesion } = useSelector((state) => state.tickets);
+  const filters = useSelector((state) => state.filter);
+  const filtersPrimary = useSelector((state) => state.filterPrimary);
+  const [viewTicketsCount, setViewTicketsCount] = useState(4);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    if (idSesion !== '') {
+    dispatch(featchIdSession());
+  }, []);
+  useEffect(() => {
+    if (idSesion && !stop) {
       dispatch(featchTicketsGet(idSesion));
     }
-  }, [idSesion]);
+  }, [idSesion, tickets]);
+
+  const ticketsRes = filterPrimaryTickets(
+    filterTicketsTransfer(tickets, filters),
+    filtersPrimary
+  );
+
   return (
     <>
-      <button
-        onClick={() => {
-          console.log(tickets);
-          dispatch(featchTicketsGet(idSesion));
-        }}
-      >
-        getId
-      </button>
-      {!stop && <p>Загрузка</p>}
-      {tickets ? (
-        tickets.map((e, i) => {
+      {ticketsRes.length !== 0 ? (
+        ticketsRes.slice(0, viewTicketsCount).map((e, i) => {
           return (
             <Card
               key={i}
@@ -35,7 +45,15 @@ export const CardCollection = () => {
           );
         })
       ) : (
-        <p>Пусто</p>
+        <p className={button}>Нет билетов</p>
+      )}
+      {ticketsRes.length !== 0 && (
+        <button
+          className={button}
+          onClick={() => setViewTicketsCount(viewTicketsCount + 5)}
+        >
+          Показать больше билетов
+        </button>
       )}
     </>
   );

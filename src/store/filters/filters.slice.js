@@ -9,21 +9,25 @@ const initialState = [
   {
     name: 'Без пересадок',
     label: 'transferZero',
+    value: 0,
     active: true,
   },
   {
     name: '1 пересадка',
     label: 'transferOne',
+    value: 1,
     active: true,
   },
   {
     name: '2 пересадки',
     label: 'transferTwo',
+    value: 2,
     active: true,
   },
   {
     name: '3 пересадки',
     label: 'transferThree',
+    value: 3,
     active: true,
   },
 ];

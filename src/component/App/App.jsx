@@ -4,16 +4,12 @@ import logo from '../../assets/Logo.png';
 import { NavBar } from '../NavBar/NavBar';
 import { Filter } from '../Filter/Filter';
 import CardCollection from '../CardCollection';
-import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
-import { featchIdSession } from '../../store/tickets/tickets.slice';
+import { Spin } from 'antd';
+import { useSelector } from 'react-redux';
 
 function App() {
   const { container, main, rightContent } = styles;
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(featchIdSession());
-  }, [dispatch]);
+  const { stop } = useSelector((state) => state.tickets);
 
   return (
     <section className={container}>
@@ -24,6 +20,7 @@ function App() {
         <Filter />
         <div className={rightContent}>
           <NavBar />
+          {!stop && <Spin />}
           <CardCollection />
         </div>
       </main>
