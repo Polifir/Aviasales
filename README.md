@@ -1,1 +1,1 @@
-link: https://aviasales-kappa-fawn.vercel.app/
+link: https://aviasales-jptp.vercel.app/
